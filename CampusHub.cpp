@@ -6,9 +6,11 @@
 
 #include <vector>      // Gives Access To Vector Datatypes 
 
-#include <iomanip>    // Used To format input and output  
+#include <iomanip>    // Used To format input and output    
 
 #include <limits>    // Gives Infomation about the limits of data types
+
+#include <fstream>  // Used for file handling both read and write
 
 using namespace std;
 
@@ -52,6 +54,8 @@ void exitSystem();
 int main(){
 	// A CampusHub Management System
 	
+	// A file handling variable that replaces fstream
+	fstream bankStorage;
 	
 	// Including Vectors so it serves as a storage...
 	vector <Student> database;
@@ -201,6 +205,9 @@ int main(){
 		string firstName,departmentName,lastName,courseName,address,teleNumber,studentID;
 	    int age;
 	    double gpa;
+	    
+	    // 	Variable for the file handling format
+	    fstream dataBank;
 		
 		// The UI For Declaring The Add New Student
 		cout << " ********************************************************** \n";
@@ -313,9 +320,36 @@ int main(){
 			// If The User Choose Yes
 			case 'Y':
 			case 'y':{
-		
+				
+				// Adding the database to memory first
 			database.push_back(Student(firstName,lastName,departmentName,courseName,address,teleNumber,age,studentID,gpa));
-		
+		        
+		        // 	Actually Saving It
+		      dataBank.open( "Storage.txt",ios::app);
+		      
+		         if( dataBank.is_open() ){
+		         	   	
+		    dataBank << " Personal Details : " << endl;
+			dataBank << " First Name      || " << firstName << endl; 
+		    dataBank << " Last Name       || " << lastName << endl;
+			dataBank << " Age             || " << age << endl;
+			dataBank << endl;
+			
+			dataBank << " Academic Details : " << endl; 
+		    dataBank << " Department Name || " << departmentName << endl; 
+			dataBank << " Course Name     || " << courseName << endl;
+			dataBank << " Student ID      || " << studentID << endl;
+			dataBank << " Gpa             || " << gpa << endl;
+			dataBank << endl;  	
+			
+			dataBank << " Home Details : " << endl;
+			dataBank << " Address         || " << address << endl;
+			dataBank << " Tele Number     || " << teleNumber << endl; 
+			dataBank << endl;
+			cout <<"======================================================================================== \n";
+			cout << endl;
+		         	
+		         	 
 		   cout << " || ----  New Student Added ---- || \n";
 		   cout << endl;
 			
@@ -334,6 +368,32 @@ int main(){
 	        	if (opt == 'Y' || opt == 'y'){
 		
 	        database.push_back(Student(firstName,lastName,departmentName,courseName,address,teleNumber,age,studentID,gpa));
+	        
+	             // 	Actually Saving It
+		      dataBank.open( "Storage.txt",ios::app);
+		      
+		         if( dataBank.is_open() ){
+		         	   	
+		    dataBank << " Personal Details : " << endl;
+			dataBank << " First Name      || " << firstName << endl; 
+		    dataBank << " Last Name       || " << lastName << endl;
+			dataBank << " Age             || " << age << endl;
+			dataBank << endl;
+			
+			dataBank << " Academic Details : " << endl; 
+		    dataBank << " Department Name || " << departmentName << endl; 
+			dataBank << " Course Name     || " << courseName << endl;
+			dataBank << " Student ID      || " << studentID << endl;
+			dataBank << " Gpa             || " << gpa << endl;
+			dataBank << endl;  	
+			
+			dataBank << " Home Details : " << endl;
+			dataBank << " Address         || " << address << endl;
+			dataBank << " Tele Number     || " << teleNumber << endl; 
+			dataBank << endl;
+			cout <<"======================================================================================== \n";
+			cout << endl;
+	        
 		   cout << " || ----  New Student Added ---- || \n";
 		   cout << endl;
 		   break;
@@ -352,8 +412,13 @@ int main(){
 	
 }
 
+}
+}
+    
 	
-    // A Function That Search For A New Student
+	
+	
+	// A Function That Search For A New Student
     void searchStudent(const vector<Student> &database){
 	
 	string studentNO;
@@ -514,6 +579,8 @@ int main(){
     	}while( option != 10);
     	
 	}
+	
+	
 	
 	// A Function Used To Delete Students
 	void deleteStudent( vector<Student> &database){
