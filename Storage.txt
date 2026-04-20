@@ -1,0 +1,30 @@
+ Personal Details : 
+ First Name      || David
+ Last Name       || Gadogbo
+ Age             || 20
+
+ Academic Details : 
+ Department Name || Applied Science
+ Course Name     || Computer Science
+ Student ID      || 01243786D
+ Gpa             || 4.2
+
+ Home Details : 
+ Address         || Mallam - Gbawe
+ Tele Number     || 053 - 702 -0554
+
+ Personal Details : 
+ First Name      || John
+ Last Name       || Aryin
+ Age             || 19
+
+ Academic Details : 
+ Department Name || Accounting
+ Course Name     || Business Adminstration
+ Student ID      || 123456789D
+ Gpa             || 5
+
+ Home Details : 
+ Address         || Kasoa
+ Tele Number     || 054 203 3523
+
